@@ -1,0 +1,104 @@
+.container {
+    background-color: var(--white);
+    margin: 5px;
+    display: block;
+    align-items: stretch;
+    padding: 10px;
+}
+.Title {
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: var(--white-text);
+}
+
+.Title-Page {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: large;
+    color: var(--purple);
+    font-weight: bold;
+}
+
+.app-content {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    letter-spacing: 4px;
+}
+.app-content::after {
+    content: '';
+    position: relative;
+    right: -10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 0.5px;
+    background-color: var(--purple);
+}
+
+.title-second {
+    font-size: x-large;
+    letter-spacing: 5px;
+}
+
+.SearchBox {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--purple);
+    border-radius: 5px;
+}
+
+.SearchBox-Input {
+    width: 500px;
+    border-radius: 5px;
+    color: black;
+    outline: none;
+    padding: 5px 20px;
+    border: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+.SearchBox-Btn {
+    border: 1px solid var(--purple);
+    background-color: var(--blue);
+    padding: 5px 20px;
+    text-transform: capitalize;
+    color: var(--purple);
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.Movies {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    margin: 50px 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.movie_app {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.movies_list {
+    padding: 5px 20px;
+    border: 1px ;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    width: 200px;
+}

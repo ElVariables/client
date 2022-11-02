@@ -1,0 +1,27 @@
+.input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    position: relative;
+    padding: 10px;
+}
+
+.input-group > label {
+    padding: 4px 6px;
+    font-size: x-large;
+    position: relative;
+    left: 40px;
+    bottom: 0px;
+    top: 0px;
+}
+
+
+.input-group > input {
+    margin: 0px;
+    outline: none;
+    padding: 4px 10px;
+    width: 80%;
+    padding-left: 50px;
+}
+

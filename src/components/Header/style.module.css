@@ -1,0 +1,68 @@
+.container {
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    line-height: 64px;
+    justify-content: space-between;
+}
+
+.logo {
+    cursor: pointer;
+    font-size: 50px;
+    margin: 0px 30px;
+    color: rgb(247, 247, 247);
+}
+.logo a {
+    color: var(--purple);
+    text-decoration: none;
+    text-shadow: 2px 2px 1px black;
+}
+
+.btn {
+    margin-right: 20px;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    border: 1px solid var(--purple);
+    border-radius: 12px;
+    line-height: 80%;
+    cursor: pointer;
+    background-color: var(--blue);
+    color: black;
+}
+
+.btn a {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+.btn p {
+    font-size: large;
+    text-transform: capitalize;
+    margin: 10px 20px;
+}
+
+.controller {
+    display: flex;
+    flex-direction: row;
+    text-transform: capitalize;
+    width: 30%;
+    justify-content: space-around;
+}
+
+.controller a {
+    text-decoration: none;
+    color: black;
+}
+
+.store {
+    cursor: pointer;
+}
+
+.wallet {
+    cursor: pointer;
+}
+
+.docs {
+    cursor: pointer;
+}

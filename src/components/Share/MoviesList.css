@@ -1,0 +1,18 @@
+.MoviesList {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    box-shadow: 5px 5px 1px gray;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar {
+    background-color: #cfd8dc;
+    border: 2px solid var(--blue);
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #90a4ae;
+    border-radius: 2px;
+}

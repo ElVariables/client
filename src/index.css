@@ -7,9 +7,10 @@
 }
 
 :root {
-    --white: rgb(242,242,242);
-    --white-text: rgb(290,290,290);
-    --purple: #720F92;
-    --light-purple: #CBC3E3;
-    --blue: #e8f0fe
+    --white: rgb(242, 242, 242);
+    --white-text: rgb(290, 290, 290);
+    --purple: #720f92;
+    --light-purple: #cbc3e3;
+    --blue: #e8f0fe;
+    --dark: linear-gradient(to bottom right, #55566a, #282834);
 }

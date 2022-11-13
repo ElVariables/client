@@ -1,0 +1,10 @@
+.container {
+    color: var(--dark);
+    border: 1px solid black;
+    padding: 4px 8px;
+    margin: 2px;
+    font-weight: 100;
+    background-color: var(--white);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-small;
+}

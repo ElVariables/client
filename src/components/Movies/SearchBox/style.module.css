@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    width: 400px;
+    margin: 5px;
+    border-bottom: 1px solid;
+}
+
+.container > img {
+    width: 100px;
+    max-height: 50px;
+    padding: 5px 20px;
+    font-size: 1px;
+}
+
+.title {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10px;
+    margin-left: 20px;
+}
+
+.date {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10px;
+    margin-left: 20px;
+}

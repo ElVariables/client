@@ -4,6 +4,7 @@
     display: block;
     align-items: stretch;
     padding: 10px;
+    border-radius: 5px;
 }
 .Title {
     width: 100%;
@@ -71,34 +72,27 @@
     color: var(--purple);
     border-radius: 5px;
     margin: 5px;
+    cursor: pointer;
 }
 
-.Movies {
-    width: 70%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    justify-content: center;
-    margin: 50px 20px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.movie_app {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
-}
 
 .movies_list {
     padding: 5px 20px;
-    border: 1px ;
-    background-color: white;
+    border: 1px;
+    background-color: var(--white);
     border-radius: 5px;
     position: absolute;
     top: 200px;
     left: 20px;
     width: 200px;
 }
+
+.search {
+    position:absolute;
+    right: 200px;
+    top: 150px;
+    z-index: 100;
+    border: 1px solid var(--purple);
+    background-color: var(--blue);
+}
+

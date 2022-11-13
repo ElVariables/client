@@ -1,29 +1,42 @@
-import React, { useState, useEffect } from 'react';
 import './style.css';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-import Movies from '../../components/Movies';
+import Popular from '../../components/Movies/Popular';
+import NowPlaying from '../../components/Movies/Playing';
+import TopRated from '../../components/Movies/TopRated';
+import UpComing from '../../components/Movies/UpComing';
 import MoviesFilter from '../../components/Share/MoviesFilter';
+import SearchBox from '../../components/Movies/SearchBox/';
 
 const StorePage = () => {
-    const baseURL = 'https://api.themoviedb.org/3';
-    const api_key = '?&api_key=a38b8708c5afb11a25e8460a65847b94';
-    const querySelect = {
-        discover: '/discover/movie',
-        mostPopular: 'movie/popular',
-        nowPlaying: 'movie/now_playing',
-        upComing: 'movie/upcoming',
-        topRated: 'movie/top_rated',
-    };
-    const tmdbApi = baseURL + querySelect.discover + api_key;
+    const [searchBox, setSearchBox] = useState(false);
+    const [searchResults, setSearchResults] = useState([]);
 
-    const [movies, setMovies] = useState([]);
-    useEffect(() => {
-        fetch(tmdbApi)
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                setMovies(data.results);
+    const onSearch = (e) => {
+        const searchTerm = e.target.value;
+        searchHandle(searchTerm);
+    };
+
+    const searchHandle = async (searchTerm) => {
+        try {
+            const { data } = await axios.get(`https://api.themoviedb.org/3/search/movie`, {
+                params: {
+                    api_key: process.env.REACT_APP_API_KEY,
+                    query: searchTerm,
+                },
             });
+            console.log(data.results)
+            setSearchResults(data.results);
+            setSearchBox(true);
+        } catch (error) {
+            console.log(error);
+            setSearchBox(false);
+        }
+    };
+
+    useEffect(() => {
+        searchHandle();
     }, []);
 
     return (
@@ -40,26 +53,24 @@ const StorePage = () => {
                     <div className="title-second">theMovie</div>
                 </div>
                 <div className="SearchBox">
-                    <input className="SearchBox-Input"></input>
+                    <input className="SearchBox-Input" onChange={onSearch}></input>
                     <div className="SearchBox-Btn">
                         <p>search</p>
+                        {searchBox ? (
+                            <div className="search">
+                                {searchResults &&
+                                    searchResults
+                                        .splice(0, 7)
+                                        .map((movie) => <SearchBox key={movie.id} {...movie}></SearchBox>)}
+                            </div>
+                        ) : null}
                     </div>
                 </div>
             </div>
-            <div className="movie_app">
-                <div className="movies_list">
-                    <MoviesFilter value="mostPopular" name="most popular" onClick={() => {}}></MoviesFilter>
-                    <MoviesFilter name="now playing"></MoviesFilter>
-                    <MoviesFilter name="top rate"></MoviesFilter>
-                    <MoviesFilter name="up coming"></MoviesFilter>
-                </div>
-                <div className="Movies">
-                    {movies.map((movie) => (
-                        <Movies key={movie.id} {...movie} />
-                    ))}
-                </div>
-                <div>2</div>
-            </div>
+            <MoviesFilter name="the most finding">{<Popular />}</MoviesFilter>
+            <MoviesFilter name="cinema trending">{<NowPlaying />}</MoviesFilter>
+            <MoviesFilter name="forget something">{<TopRated />}</MoviesFilter>
+            <MoviesFilter name="up coming">{<UpComing />}</MoviesFilter>
         </div>
     );
 };

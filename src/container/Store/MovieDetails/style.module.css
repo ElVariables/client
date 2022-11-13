@@ -1,0 +1,134 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-image: var(--dark);
+}
+
+.banner {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0px 100px 0px;
+    align-items: stretch;
+}
+
+.logo {
+    width: 200px;
+    height: 300px;
+    box-shadow: 1px 1px 2px black;
+    border-radius: 5px;
+    border: 5px solid black;
+    z-index: 100;
+    margin: 20px;
+}
+
+.poster {
+    width: 50%;
+    opacity: 50%;
+    position: relative;
+    left: -50px;
+    margin: 10px;
+    box-shadow: 5px 5px 5px black;
+    border: 1px solid;
+}
+
+.content {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.content > h3 {
+    font-size: x-large;
+    padding: 10px 0px 0px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: black;
+}
+
+.content > h4 {
+    letter-spacing: 2px;
+}
+
+.content > p {
+    font-family: 'Times New Roman', Times, serif;
+    width: 90%;
+    color: white;
+    line-height: 1.5;
+    margin: auto;
+}
+
+.templates {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+.btn {
+    display: flex;
+    margin-top: 50px;
+    font-size: 10px;
+}
+
+.provider {
+    display: flex;
+    width: 100%;
+    margin: 30px;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.company {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.logo_company {
+    display: flex;
+    overflow: hidden;
+    border: 1px solid black;
+    box-shadow: -10px -10px black;
+    justify-content: space-evenly;
+}
+
+.company > h3 {
+    padding: 2px 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    word-spacing: 10px;
+    margin-bottom: 20px;
+    background-color: gray;
+    border: 1px solid black;
+    box-shadow: -2px -2px black;
+}
+
+.actor {
+    width: 60%;
+    padding: 10px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.actor > p {
+    width: 90%;
+    text-align: start;
+    font-size: x-large;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-left: 10px;
+    background-color: gray;
+    border: 1px solid black;
+    box-shadow: 5px 5px black;
+}
+
+

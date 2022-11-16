@@ -63,6 +63,22 @@
     cursor: pointer;
 }
 
+.wallet ::before {
+    content: '|';
+    position: relative;
+    left: -30px;
+    opacity: 10%;
+}
+
+.wallet ::after {
+    content: '|';
+    position: relative;
+    right: -30px;
+    opacity: 10%;
+}
+
 .docs {
     cursor: pointer;
+    text-transform: none;
+    letter-spacing: 1px;
 }

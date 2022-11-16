@@ -13,4 +13,9 @@
     --light-purple: #cbc3e3;
     --blue: #e8f0fe;
     --dark: linear-gradient(to bottom right, #55566a, #282834);
+    --grey: rgb(237, 236, 238);
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './style.module.css';
-import Card from '../../components/Share/card';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -16,7 +15,7 @@ const Home = () => {
                 <i class="fa-regular fa-circle-exclamation"></i>
                 <p>on going</p>
             </Link>
-            <Link>
+            <Link to="docs">
                 <h3>docs</h3>
                 <i class="fa-regular fa-circle-exclamation"></i>
                 <p>on going</p>

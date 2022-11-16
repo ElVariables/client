@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Home from './container/Home';
 import StorePage from './container/Store';
 import MovieDetails from './container/Store/MovieDetails';
+import Docs from './container/Docs';
 
 function App() {
     const [authCtx, setAuthCtx] = useState(null);
@@ -23,6 +24,7 @@ function App() {
                             <Route index element={<StorePage />} />
                             <Route path=":id" element={<MovieDetails />} />
                         </Route>
+                        <Route path="docs" element={<Docs />}></Route>
                     </Routes>
                 </BrowserRouter>
             </InstanceContext.Provider>

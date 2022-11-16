@@ -16,8 +16,14 @@ const Header = () => {
                         <p>Store</p>
                     </Link>
                 </div>
-                <div className={style.wallet}>wallet</div>
-                <div className={style.docs}>Docs</div>
+                <div className={style.wallet}>
+                    <p>wallet</p>
+                </div>
+                <div className={style.docs}>
+                    <Link to = "/docs">
+                        <p>myDocument</p>
+                    </Link>
+                </div>
             </div>
             <div className={style.btn}>
                 <div>

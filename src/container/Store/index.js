@@ -26,7 +26,7 @@ const StorePage = () => {
                     query: searchTerm,
                 },
             });
-            console.log(data.results)
+            console.log(data.results);
             setSearchResults(data.results);
             setSearchBox(true);
         } catch (error) {

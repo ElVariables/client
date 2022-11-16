@@ -11,22 +11,21 @@ import Credits from '../../../components/Movies/Credits';
 const MovieDetails = () => {
     const [movie, setMovie] = useState([]);
     const imgURL = 'https://image.tmdb.org/t/p/w500';
-
     const { id } = useParams();
-    const fetchMovie = async () => {
-        const { data } = await axios.get(`${process.env.REACT_APP_URL}/${id}`, {
-            params: {
-                api_key: process.env.REACT_APP_API_KEY,
-            },
-        });
-        setMovie(data);
-        console.log(data);
-    };
 
     useEffect(() => {
+        async function fetchMovie() {
+            const { data } = await axios.get(`${process.env.REACT_APP_URL}/${id}`, {
+                params: {
+                    api_key: process.env.REACT_APP_API_KEY,
+                },
+            });
+            setMovie(data);
+            console.log(data);
+        }
         fetchMovie();
         window.scrollTo(0, 0);
-    }, []);
+    }, [id]);
     return (
         <div className={style.container}>
             <div className={style.banner}>

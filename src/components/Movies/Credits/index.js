@@ -8,22 +8,24 @@ const Credits = () => {
     const URL = 'https://image.tmdb.org/t/p/w500';
     const [Actors, setActors] = useState([]);
     const { id } = useParams();
-    const fetchCredits = async () => {
-        try {
-            const { data } = await axios.get(`${process.env.REACT_APP_URL}/${id}/credits`, {
-                params: {
-                    api_key: process.env.REACT_APP_API_KEY,
-                },
-            });
-            setActors(data.cast);
-            console.log(data.cast);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+
     useEffect(() => {
+        async function fetchCredits() {
+            try {
+                const { data } = await axios.get(`${process.env.REACT_APP_URL}/${id}/credits`, {
+                    params: {
+                        api_key: process.env.REACT_APP_API_KEY,
+                    },
+                });
+                setActors(data.cast);
+                console.log(data.cast);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
         fetchCredits();
-    }, []);
+    }, [id]);
 
     return (
         <div className={style.container}>

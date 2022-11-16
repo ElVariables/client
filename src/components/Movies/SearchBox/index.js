@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Style from './style.module.css';
 
 const SearchBox = ({ title, poster_path, release_date, id }) => {

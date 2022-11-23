@@ -37,6 +37,10 @@
     cursor: pointer;
 }
 
+.slide_bar {
+    list-style: none;
+}
+
 .slide_bar :hover {
     background-color: var(--blue);
 }
@@ -47,7 +51,7 @@
     position: relative;
 }
 
-.app p {
+.title {
     font-size: small;
     text-align: end;
     padding: 4px 8px;
@@ -89,10 +93,14 @@
     text-transform: capitalize;
 }
 
-.menu_bar ul {
-    padding: 20px 0px 0px 10px;
+.menu_bar p {
     border-bottom: 1px groove;
+    padding: 20px 0px 0px 10px;
+}
+
+.menu_bar ul li {
     list-style: none;
+    margin: 5px 5px 5px 20px;
 }
 
 .content {
@@ -115,34 +123,9 @@
     padding-left: 70%;
 }
 
-.add_box {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--grey);
-    width: 50%;
-    align-self: center;
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: translate(50%, 30%);
-    border-style: ridge;
+.notes {
+    background-color: var(--blue);
+    height: 100%;
     padding: 10px;
-}
-
-.add_box textarea {
-    border: inset;
-    min-height: 200px;
-    margin: 10px 0px;
-    padding: 20px 10px 10px;
-    outline: none;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-.add_box button {
-    width: 30%;
-    text-transform: capitalize;
-    padding: 2px;
-    opacity: 50%;
-    background-color: white;
-    align-self: flex-end;
+    all: none;
 }

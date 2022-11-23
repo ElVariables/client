@@ -4,7 +4,8 @@ import style from './style.module.css';
 const InputNote = (props) => {
     return (
         <div className={style.container}>
-            <input placeholder={props.placeholder} className={style.input} />
+            <label>{props.label}</label>
+            <input placeholder={props.placeholder}className={style.input} />
         </div>
     );
 };

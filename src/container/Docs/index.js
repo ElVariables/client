@@ -1,49 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import AuthContext from '../../context/Context';
 import InputNote from '../../components/Docs/InputNote';
 import style from './style.module.css';
+import Notes from '../../components/Docs/Notes';
+import { handleNote } from '../../context/Reducer';
+import AddNote from '../../components/Docs/AddNew';
 
 const Docs = () => {
+    const {
+        state: { note },
+        dispatch,
+    } = useContext(AuthContext);
     const [hide, setHide] = useState(true);
     const [search, setSearch] = useState(false);
+    const [add, setAdd] = useState(false);
+
+    const getData = () => {
+        handleNote(dispatch);
+    };
+
+    useEffect(() => {
+        getData();
+    }, []);
 
     return (
         <div className={style.container}>
-            <div className={style.slide_bar}>
-                <div className={style.space}>
+            <ul className={style.slide_bar}>
+                <li className={style.space}>
                     <i className="fa-solid fa-bars" onClick={() => setHide(!hide)}></i>
-                </div>
-                <div className={style.space}>
+                </li>
+                <li className={style.space}>
                     <i className="fa-solid fa-magnifying-glass" onClick={() => setSearch(!search)}></i>
-                </div>
-                <div className={style.space}>
-                    <i className="fa-solid fa-plus"></i>
-                </div>
-            </div>
+                </li>
+                <li className={style.space}>
+                    <i className="fa-solid fa-plus" onClick={() => setAdd(!add)}></i>
+                </li>
+            </ul>
             <div className={style.app}>
-                <p>supperNote</p>
+                <div className={style.title}>supperNote</div>
                 <div className={style.center}>
                     {hide ? (
                         <div className={style.menu_bar}>
                             <div className={style.menu_bar_title}>
-                                <i class="fa-sharp fa-solid fa-house"></i>
+                                <i className="fa-sharp fa-solid fa-house"></i>
                                 <h3>home</h3>
                             </div>
+                            <p>Task</p>
                             <ul>
-                                Task
-                                <li></li>
+                                {note
+                                    ? note.map((data) => (
+                                          <li key={data._id} {...data}>
+                                              {data.task}
+                                          </li>
+                                      ))
+                                    : null}
                             </ul>
                         </div>
                     ) : null}
                     <div className={style.content}>
-                        {search ? <div className={style.search_bar}>{<InputNote placeholder = "Search by keyword"/>}</div> : null}
-                        <div>content</div>
+                        {search ? (
+                            <div className={style.search_bar}>{<InputNote placeholder="Search by keyword" />}</div>
+                        ) : null}
+                        <div className={style.notes}>
+                            {note ? note.map((data) => <Notes key={data._id} {...data}></Notes>) : null}
+                        </div>
                     </div>
                 </div>
-                <div className={style.add_box}>
-                        <InputNote placeholder = "Title " className = {style.add_box_title}/>
-                        <textarea placeholder = "Text.."/>
-                        <button>add new</button>
-                </div>
+                {add ? <AddNote hide /> : null}
             </div>
         </div>
     );

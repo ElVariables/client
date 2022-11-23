@@ -2,6 +2,11 @@
     display: flex;
     width: 100%;
     border-style: inset;
+    margin-bottom: 10px;
+    background-color: white;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0px 10px;
 }
 
 .input {
@@ -9,8 +14,15 @@
     padding: 4px 8px;
     width: 100%;
     font-size: small;
-    background-color: white;
-    padding-left: 40px;
     outline: none;
     font-family: 'Times New Roman', Times, serif;
+    text-transform: capitalize;
+}
+
+.container > label {
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    margin: 0px 20px;
+    font-size: small;
+    align-items: center;
 }

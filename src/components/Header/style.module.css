@@ -1,15 +1,49 @@
 .container {
     background-color: var(--white);
     display: flex;
-    align-items: center;
     line-height: 64px;
+    align-items: center;
     justify-content: space-between;
+}
+
+.left {
+    width: 40%;
+    display: flex;
+    justify-content: start;
+    align-items: baseline;
+}
+
+.right {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth {
+    display: flex;
+    align-items: center;
+}
+
+.auth i {
+    color: var(--purple);
+    font-size: 40px;
+    position: relative;
+    right: -10px;
+}
+.auth p {
+    border: 1px solid var(--purple);
+    line-height: 30px;
+    padding: 0px 20px;
+    background-color: var(--blue);
+    color: var(--purple);
+    letter-spacing: 1px;
+    border-radius: 5px;
+    margin-right: 20px;
 }
 
 .logo {
     cursor: pointer;
     font-size: 50px;
-    margin: 0px 30px;
+    margin-left: 30px;
     color: rgb(247, 247, 247);
 }
 .logo a {
@@ -43,11 +77,12 @@
 }
 
 .controller {
+    line-height: 100%;
+    width: 100%;
     display: flex;
-    flex-direction: row;
-    text-transform: capitalize;
-    width: 30%;
+    align-items: center;
     justify-content: space-around;
+    text-transform: capitalize;
 }
 
 .controller a {
@@ -61,20 +96,6 @@
 
 .wallet {
     cursor: pointer;
-}
-
-.wallet ::before {
-    content: '|';
-    position: relative;
-    left: -30px;
-    opacity: 10%;
-}
-
-.wallet ::after {
-    content: '|';
-    position: relative;
-    right: -30px;
-    opacity: 10%;
 }
 
 .docs {

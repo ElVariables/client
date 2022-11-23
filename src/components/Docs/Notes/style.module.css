@@ -1,0 +1,36 @@
+.container {
+    border: 1px solid black;
+    display: flex;
+    margin: 5px;
+    border: 5px ridge;
+    background-color: var(--grey);
+    align-items: center;
+    text-transform: capitalize;
+    justify-content: center;
+}
+
+.title {
+    width: 20%;
+    justify-content: center;
+    border: 5px ridge;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 4px;
+}
+
+.desc {
+    width: 70%;
+    padding: 4px 4px 4px 10px;
+    font-weight: 50;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container button {
+    border: 1px solid black;
+    text-transform: uppercase;
+    border: 5px ridge;
+    padding: 2px;
+    opacity: 70%;
+    font-size: x-small;
+    cursor: pointer;
+}

@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
-import InstanceContext from './context/auth';
+import AuthState from './context/State';
 
 import FormEl from './components/Form';
 import Header from './components/Header';
@@ -9,12 +8,12 @@ import Home from './container/Home';
 import StorePage from './container/Store';
 import MovieDetails from './container/Store/MovieDetails';
 import Docs from './container/Docs';
+import Private from './components/Header/Private';
 
 function App() {
-    const [authCtx, setAuthCtx] = useState(null);
     return (
         <div className="App">
-            <InstanceContext.Provider value={{ user: authCtx, setUser: setAuthCtx }}>
+            <AuthState>
                 <BrowserRouter>
                     <Header />
                     <Routes>
@@ -24,10 +23,10 @@ function App() {
                             <Route index element={<StorePage />} />
                             <Route path=":id" element={<MovieDetails />} />
                         </Route>
-                        <Route path="docs" element={<Docs />}></Route>
+                        <Route path="docs" element={<Private component={Docs} />}></Route>
                     </Routes>
                 </BrowserRouter>
-            </InstanceContext.Provider>
+            </AuthState>
         </div>
     );
 }

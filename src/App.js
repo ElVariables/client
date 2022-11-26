@@ -23,7 +23,8 @@ function App() {
                             <Route index element={<StorePage />} />
                             <Route path=":id" element={<MovieDetails />} />
                         </Route>
-                        <Route path="docs" element={<Private component={Docs} />}></Route>
+                        <Route path="docs" element={<Private component={Docs} />}>
+                        </Route>
                     </Routes>
                 </BrowserRouter>
             </AuthState>

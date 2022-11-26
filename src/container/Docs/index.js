@@ -2,26 +2,23 @@ import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from '../../context/Context';
 import InputNote from '../../components/Docs/InputNote';
 import style from './style.module.css';
-import Notes from '../../components/Docs/Notes';
-import { handleNote } from '../../context/Reducer';
+import { noteData } from '../../context/Reducer';
 import AddNote from '../../components/Docs/AddNew';
+import { Navigate } from 'react-router-dom';
 
 const Docs = () => {
     const {
-        state: { note },
+        state: { isNote, error },
         dispatch,
     } = useContext(AuthContext);
-    const [hide, setHide] = useState(true);
+    const [hide, setHide] = useState(false);
     const [search, setSearch] = useState(false);
     const [add, setAdd] = useState(false);
-
-    const getData = () => {
-        handleNote(dispatch);
-    };
-
     useEffect(() => {
-        getData();
-    }, []);
+        if (error) {
+            console.log(error);
+        }
+    }, [error]);
 
     return (
         <div className={style.container}>
@@ -46,27 +43,16 @@ const Docs = () => {
                                 <h3>home</h3>
                             </div>
                             <p>Task</p>
-                            <ul>
-                                {note
-                                    ? note.map((data) => (
-                                          <li key={data._id} {...data}>
-                                              {data.task}
-                                          </li>
-                                      ))
-                                    : null}
-                            </ul>
+                            <ul></ul>
                         </div>
                     ) : null}
                     <div className={style.content}>
                         {search ? (
                             <div className={style.search_bar}>{<InputNote placeholder="Search by keyword" />}</div>
                         ) : null}
-                        <div className={style.notes}>
-                            {note ? note.map((data) => <Notes key={data._id} {...data}></Notes>) : null}
-                        </div>
+                        <div className={style.notes}></div>
                     </div>
                 </div>
-                {add ? <AddNote hide /> : null}
             </div>
         </div>
     );

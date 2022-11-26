@@ -1,15 +1,17 @@
 import fetchAPI from '../utils/fetch';
 import {
-    LOGIN_FAIL,
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
+    LOGIN_ERROR,
     LOG_OUT,
-    NOTE_REQUEST,
-    NOTE_SUCCESS,
-    NOTE_ERROR,
     ADD_NOTE_REQUEST,
     ADD_NOTE_ERROR,
     ADD_NOTE_SUCCESS,
+    FETCH_USER,
+    FETCH_USER_ERROR,
+    NOTE_REQUEST,
+    NOTE_ERROR,
+    NOTE_SUCCESS,
 } from './type';
 
 const reducer = (state, action) => {
@@ -20,105 +22,107 @@ const reducer = (state, action) => {
         case LOGIN_REQUEST:
             return {
                 ...state,
-                loading: true,
-                user: null,
-                error: null,
+                isAuthenticated: false,
+                isNote: null,
             };
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                ...payload,
-                loading: false,
                 isAuthenticated: true,
+                isNote: null,
+                ...payload,
             };
-        case LOGIN_FAIL:
+        case LOGIN_ERROR:
+        case FETCH_USER_ERROR:
         case LOG_OUT:
-        case NOTE_ERROR:
             return {
                 ...state,
-                ...payload,
                 isAuthenticated: false,
                 error: payload,
-                token: null,
-                user: null,
-                note: null,
+                username: null,
+                accessToken: null,
+                isNote: null,
             };
+        case FETCH_USER:
+            return {
+                ...state,
+                isAuthenticated: true,
+                ...payload,
+            };
+
         case NOTE_REQUEST:
             return {
                 ...state,
-                ...payload,
                 isAuthenticated: true,
-                loading: false,
-                note: null,
+                isNote: null,
             };
+
         case NOTE_SUCCESS:
             return {
                 ...state,
-                ...payload,
                 isAuthenticated: true,
-                loading: false,
-                note: payload.data,
+                isNote: payload,
+            };
+        case NOTE_ERROR:
+            return {
+                ...state,
+                isAuthenticated: true,
+                isNote: null,
+                error: payload,
             };
         default:
             return;
     }
 };
 
-export const handleLogin = async (FormData, dispatch) => {
+export const actionsLogin = async (FormData, dispatch) => {
     dispatch({
         type: LOGIN_REQUEST,
     });
-    console.log(FormData);
     try {
-        const responsive = await fetchAPI.login(FormData);
+        const response = await fetchAPI.login(FormData);
         const action = {
             type: LOGIN_SUCCESS,
-            payload: responsive.data,
-        };
-        dispatch(action);
-        localStorage.setItem('token', responsive.data.accessToken);
-    } catch (err) {
-        dispatch({
-            type: LOGIN_FAIL,
-            payload: err.response.data.msg,
-        });
-    }
-};
-
-export const handleNote = async (dispatch) => {
-    dispatch({
-        type: NOTE_REQUEST,
-    });
-    try {
-        const response = await fetchAPI.getNote();
-        const action = {
-            type: NOTE_SUCCESS,
             payload: response.data,
         };
         dispatch(action);
     } catch (err) {
         dispatch({
-            type: NOTE_ERROR,
+            type: LOGIN_ERROR,
             payload: err.response.data.msg,
         });
     }
 };
 
-export const handleNewNode = async (data, dispatch) => {
-    dispatch({
-        type: ADD_NOTE_REQUEST,
-    });
+export const userData = async (dispatch) => {
     try {
-        const responsive = await fetchAPI.addNote(data, dispatch);
-        const action = {
-            type: ADD_NOTE_SUCCESS,
-            payload: responsive.data,
-        };
-        dispatch(action);
+        const response = await fetchAPI.loadUser();
+        dispatch({
+            type: FETCH_USER,
+            payload: response.data.user,
+        });
     } catch (err) {
         dispatch({
-            type: ADD_NOTE_ERROR,
-            payload: err.responsive.data.msg,
+            type: FETCH_USER_ERROR,
+            payload: err.response.data.msg,
+        });
+    }
+};
+
+export const noteData = async (dispatch) => {
+    dispatch({
+        type: NOTE_REQUEST,
+    });
+    try {
+        const note = await fetchAPI.loadNote();
+        dispatch({
+            type: NOTE_SUCCESS,
+            payload: note.data,
+        });
+    } catch (e) {
+        dispatch({
+            type: NOTE_ERROR,
+            payload: e.note.data.msg,
         });
     }
 };

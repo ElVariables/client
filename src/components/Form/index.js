@@ -3,7 +3,7 @@ import style from './style.module.css';
 import Card from '../Share/card';
 import InputGroup from '../Share/InputGroup';
 import AuthContext from '../../context/Context';
-import { handleLogin } from '../../context/Reducer';
+import { actionsLogin } from '../../context/Reducer';
 import { Navigate } from 'react-router-dom';
 
 const FormEl = () => {
@@ -18,12 +18,12 @@ const FormEl = () => {
             username: username,
             password: password,
         };
-        handleLogin(submitValue, dispatch);
+        actionsLogin(submitValue, dispatch);
     };
 
     useEffect(() => {
         if (error) {
-            console.log(error.message);
+            console.log(error);
         }
     }, [error]);
 

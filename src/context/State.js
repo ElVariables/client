@@ -1,18 +1,24 @@
 import { useEffect, useReducer } from 'react';
+import { setAuthToken } from '../utils/token';
 import AuthContext from './Context';
-import reducer, { handleNote } from './Reducer';
+import reducer, { noteData, userData } from './Reducer';
 
 const AuthState = (props) => {
     const initialState = {
-        token: localStorage.getItem('token'),
+        accessToken: localStorage.getItem('token'),
         isAuthenticated: false,
-        loading: false,
-        error: false,
-        user: null,
-        note: false,
+        isNote: null,
+        error: null,
+        username: null,
     };
 
     const [state, dispatch] = useReducer(reducer, initialState);
+
+    useEffect(() => {
+        setAuthToken(state.accessToken);
+        userData(dispatch);
+    }, [state.accessToken,]);
+
 
     return (
         <AuthContext.Provider

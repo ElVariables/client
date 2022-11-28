@@ -16,20 +16,17 @@ import {
 
 const reducer = (state, action) => {
     const { type, payload } = action;
-    console.log({ type, payload });
 
     switch (type) {
         case LOGIN_REQUEST:
             return {
                 ...state,
                 isAuthenticated: false,
-                isNote: null,
             };
         case LOGIN_SUCCESS:
             return {
                 ...state,
                 isAuthenticated: true,
-                isNote: null,
                 ...payload,
             };
         case LOGIN_ERROR:
@@ -38,36 +35,36 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isAuthenticated: false,
+                isNote: false,
                 error: payload,
                 username: null,
                 accessToken: null,
-                isNote: null,
             };
         case FETCH_USER:
             return {
                 ...state,
                 isAuthenticated: true,
+                isNote: false,
+                note: null,
                 ...payload,
             };
-
         case NOTE_REQUEST:
             return {
                 ...state,
                 isAuthenticated: true,
-                isNote: null,
+                isNote: false,
             };
-
         case NOTE_SUCCESS:
             return {
                 ...state,
                 isAuthenticated: true,
-                isNote: payload,
+                isNote: true,
+                note: payload.data,
             };
         case NOTE_ERROR:
             return {
                 ...state,
-                isAuthenticated: true,
-                isNote: null,
+                isNote: false,
                 error: payload,
             };
         default:

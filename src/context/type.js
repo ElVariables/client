@@ -1,3 +1,6 @@
+//APP STATE
+
+
 // NOTE
 // 1. NOTE
 export const NOTE_REQUEST = 'NOTE_REQUEST';

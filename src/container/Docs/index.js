@@ -2,23 +2,26 @@ import React, { useState, useContext, useEffect } from 'react';
 import AuthContext from '../../context/Context';
 import InputNote from '../../components/Docs/InputNote';
 import style from './style.module.css';
-import { noteData } from '../../context/Reducer';
 import AddNote from '../../components/Docs/AddNew';
+
+import Note from '../../components/Docs/Note';
+import { noteData } from '../../context/Reducer';
 import { Navigate } from 'react-router-dom';
 
 const Docs = () => {
     const {
-        state: { isNote, error },
+        state: { isNote, note },
         dispatch,
     } = useContext(AuthContext);
+
     const [hide, setHide] = useState(false);
     const [search, setSearch] = useState(false);
     const [add, setAdd] = useState(false);
+
     useEffect(() => {
-        if (error) {
-            console.log(error);
-        }
-    }, [error]);
+        noteData(dispatch);
+    }, []);
+
 
     return (
         <div className={style.container}>
@@ -50,7 +53,9 @@ const Docs = () => {
                         {search ? (
                             <div className={style.search_bar}>{<InputNote placeholder="Search by keyword" />}</div>
                         ) : null}
-                        <div className={style.notes}></div>
+                        <div className={style.notes}>
+                            {isNote && note ? note.map((n) => <Note key={n._id} {...n}></Note>) : null}
+                        </div>
                     </div>
                 </div>
             </div>

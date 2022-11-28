@@ -10,8 +10,4 @@ const Private = ({ component: Component }) => {
 
 export default Private;
 
-export const DocsRouter = ({ component: Component }) => {
-    const { state } = useContext(AuthContext);
-    const { isNote } = state;
-    return isNote ? <Component /> : <Navigate to="/form" />;
-};
+

@@ -1,15 +1,16 @@
 import { useEffect, useReducer } from 'react';
 import { setAuthToken } from '../utils/token';
 import AuthContext from './Context';
-import reducer, { noteData, userData } from './Reducer';
+import reducer, { userData } from './Reducer';
 
 const AuthState = (props) => {
     const initialState = {
         accessToken: localStorage.getItem('token'),
         isAuthenticated: false,
-        isNote: null,
+        isNote: false,
         error: null,
         username: null,
+        note: null,
     };
 
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -17,8 +18,7 @@ const AuthState = (props) => {
     useEffect(() => {
         setAuthToken(state.accessToken);
         userData(dispatch);
-    }, [state.accessToken,]);
-
+    }, [state.accessToken]);
 
     return (
         <AuthContext.Provider

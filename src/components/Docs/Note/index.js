@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { } from 'react';
 import style from './style.module.css';
 
-const Notes = ({ title, desc }) => {
+
+const Note = ({title, desc}) => {
     return (
         <div className={style.container}>
             <div className={style.title}>{title}</div>
@@ -16,4 +17,4 @@ const Notes = ({ title, desc }) => {
     );
 };
 
-export default Notes;
+export default Note;

@@ -28,7 +28,7 @@ const FormEl = () => {
     }, [error]);
 
     if (isAuthenticated) {
-        return <Navigate to="/" />;
+        return <Navigate to={window.history.back()} />;
     }
 
     return (
